@@ -11,3 +11,4 @@
 [2025-10-14T15:33:17] Commit #11: Update styling for dashboard and responsive layouts
 [2025-10-28T11:38:33] Commit #12: Add verification helpers for user authentication
 [2025-10-28T13:24:47] Commit #13: Resolve memory leaks in WebSocket connection
+[2025-10-28T13:36:09] Commit #14: Document API endpoints in backend README
