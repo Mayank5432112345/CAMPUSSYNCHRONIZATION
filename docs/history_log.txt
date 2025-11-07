@@ -17,3 +17,4 @@
 [2025-10-28T19:57:06] Commit #17: Improve input validation on registration form
 [2025-11-01T12:39:33] Commit #18: Document API endpoints in backend README
 [2025-11-01T19:54:56] Commit #19: Fix layout alignment in settings page
+[2025-11-07T19:47:26] Commit #20: Refactor middleware for rate limiting
