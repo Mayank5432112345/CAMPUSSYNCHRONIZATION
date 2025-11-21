@@ -21,3 +21,4 @@
 [2025-11-07T20:01:20] Commit #21: Resolve memory leaks in WebSocket connection
 [2025-11-21T09:23:15] Commit #22: Fix layout alignment in settings page
 [2025-11-21T10:56:42] Commit #23: Document API endpoints in backend README
+[2025-11-21T18:00:16] Commit #24: Improve input validation on registration form
