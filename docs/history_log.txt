@@ -25,3 +25,4 @@
 [2025-11-22T11:25:58] Commit #25: Add unit tests for helper utility functions
 [2025-12-06T10:42:13] Commit #26: Clean up unused dependencies from package.json
 [2025-12-09T17:11:58] Commit #27: Add unit tests for helper utility functions
+[2025-12-16T09:18:58] Commit #28: Fix layout alignment in settings page
