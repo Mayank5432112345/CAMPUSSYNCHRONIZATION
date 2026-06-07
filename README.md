@@ -107,13 +107,13 @@ For further technical and workflow see the architecture and workflow documents b
 
 Key internal documentation that explains the app flows, DB query patterns, error-handling design, multi-organization architecture, and security/auth flows. Click any link to open the detailed guide on GitHub:
 
-- [User Workflow](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/User-Workflow.md) — end-to-end user flows and signup/login verification requirements
-- [DB Query Flow](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/DB-Query-flow.md) — database access patterns and query examples used across services
-- [Error Handling Architecture](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/ERROR-HANDLING-ARCHITECTURE.md) — global error handling, boundaries, and toast UX
-- [Multi-Org Architecture](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/Multi-Org-Arch.md) — multi-tenancy design and RLS strategy
-- [Password Reset (PKCE) Flow](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/Password-reset.md) — secure password reset and PKCE notes
-- [Security & Auth Flow](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/Security-Auth-flow.md) — auth flow diagrams and security considerations
-- [Tech Guide](https://github.com/Mayank5432112345/CampusSync/blob/main/readme/TechGUIDE.md) — development conventions, deployment notes and operational guidance
+- [User Workflow](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/User-Workflow.md) — end-to-end user flows and signup/login verification requirements
+- [DB Query Flow](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/DB-Query-flow.md) — database access patterns and query examples used across services
+- [Error Handling Architecture](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/ERROR-HANDLING-ARCHITECTURE.md) — global error handling, boundaries, and toast UX
+- [Multi-Org Architecture](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/Multi-Org-Arch.md) — multi-tenancy design and RLS strategy
+- [Password Reset (PKCE) Flow](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/Password-reset.md) — secure password reset and PKCE notes
+- [Security & Auth Flow](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/Security-Auth-flow.md) — auth flow diagrams and security considerations
+- [Tech Guide](https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION/blob/main/readme/TechGUIDE.md) — development conventions, deployment notes and operational guidance
 
 ---
 ## Demo :
@@ -227,8 +227,8 @@ PostgreSQL 16 (via Supabase)
 
 ### **1. Clone Repository**
 ```bash
-git clone https://github.com/Mayank5432112345/CampusSync.git
-cd CampusSync/frontend
+git clone https://github.com/Mayank5432112345/CAMPUSSYNCHRONIZATION.git
+cd CAMPUSSYNCHRONIZATION/frontend
 ```
 
 ### **2. Install Dependencies**
