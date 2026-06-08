@@ -3,6 +3,14 @@ import { createSupabaseServerClient } from '@/lib/supabaseServer';
 
 export async function POST() {
 	try {
+		const isPlaceholderEnv = process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder-project');
+
+		if (isPlaceholderEnv) {
+			const response = success({ success: true }, 'Signed out successfully');
+			response.cookies.delete('sb-mock-session');
+			return response;
+		}
+
 		const supabase = await createSupabaseServerClient();
 		const { error } = await supabase.auth.signOut();
 		

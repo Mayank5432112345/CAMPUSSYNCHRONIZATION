@@ -24,6 +24,40 @@ export async function POST(request: NextRequest) {
 	// Prepare response to capture auth cookies
 	const response = NextResponse.json({ ok: true });
 
+	const isPlaceholderEnv = process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder-project');
+
+	if (isPlaceholderEnv) {
+		console.log('[complete-login] Offline mock mode: auto-completing login');
+		
+		let role = 'student';
+		if (access_token.includes('recruiter')) role = 'recruiter';
+		if (access_token.includes('faculty')) role = 'faculty';
+		if (access_token.includes('admin')) role = 'admin';
+
+		const mockUser = {
+			id: '00000000-0000-0000-0000-222222222222',
+			email: 'student@iiitl.ac.in',
+			role,
+			user_metadata: { full_name: 'Mock Test User' }
+		};
+
+		const mockSession = {
+			access_token,
+			refresh_token,
+			user: mockUser
+		};
+
+		// Set the mock session cookie
+		response.cookies.set('sb-mock-session', JSON.stringify(mockSession), {
+			path: '/',
+			httpOnly: false,
+			maxAge: 60 * 60 * 24 * 7
+		});
+
+		const redirectTo = getRedirectForRole(role);
+		return NextResponse.json({ ok: true, redirectTo }, { status: 200, headers: response.headers });
+	}
+
 	const supabase = createServerClient(
 		process.env.NEXT_PUBLIC_SUPABASE_URL!,
 		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

@@ -12,6 +12,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const isPlaceholderEnv = process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder-project');
+
+    if (isPlaceholderEnv) {
+      console.log('[check-user-exists] Offline mock mode: checking mock user existence');
+      const emailDomain = email.toLowerCase().split('@')[1];
+      const isEducational = emailDomain === 'iiitl.ac.in' || emailDomain.endsWith('.iiitl.ac.in') || emailDomain.endsWith('.edu') || emailDomain.endsWith('.ac.in');
+      return NextResponse.json({ exists: isEducational });
+    }
+
     // Create admin client to check auth.users table
     const supabaseAdmin = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,

@@ -19,6 +19,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const isPlaceholderEnv = process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder-project');
+
+    if (isPlaceholderEnv) {
+      console.log('[RESEND_CONFIRMATION] Offline mock mode: auto-resending mock confirmation');
+      return NextResponse.json({
+        success: true,
+        message: 'Verification email sent! (Offline mock: you can now go to Login and sign in directly!)'
+      });
+    }
+
     const adminClient = await createSupabaseAdminClient();
 
     console.log('[RESEND_CONFIRMATION] Attempting to resend confirmation email for:', email);

@@ -6,6 +6,43 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
+  const isPlaceholderEnv = process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder-project');
+
+  if (isPlaceholderEnv) {
+    const mockSessionCookie = request.cookies.get('sb-mock-session');
+    let user = null;
+    if (mockSessionCookie) {
+      try {
+        const session = JSON.parse(mockSessionCookie.value);
+        user = session.user;
+      } catch {}
+    }
+
+    const createMockPromise = (data: any): any => {
+      const result = { data, error: null };
+      const promise = Promise.resolve(result);
+      
+      const chain = {
+        eq: () => createMockPromise(Array.isArray(data) ? data[0] || data : data),
+        limit: () => createMockPromise(data),
+        maybeSingle: () => Promise.resolve({ data: Array.isArray(data) ? data[0] || data : data, error: null }),
+        single: () => Promise.resolve({ data: Array.isArray(data) ? data[0] || data : data, error: null })
+      };
+      
+      return Object.assign(promise, chain);
+    };
+
+    const mockSupabase: any = {
+      from: () => ({
+        select: () => ({
+          eq: () => createMockPromise([{ role: user?.role || 'student', approval_status: 'approved' }])
+        })
+      })
+    };
+
+    return { supabaseResponse, user, supabase: mockSupabase };
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // PRODUCTION SECURITY HEADERS
   // =====================================================
   async headers() {
+    if (process.env.NODE_ENV === 'development') {
+      return [];
+    }
     return [
       {
         source: '/:path*',
