@@ -72,14 +72,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
   <link rel="icon" href="/logo-clean.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#667eea" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
-      <body className="antialiased font-sans min-h-screen">
+      <body className="antialiased font-sans min-h-screen" suppressHydrationWarning>
         <ErrorBoundary>
           <ToastProvider>
             <OrganizationProvider>

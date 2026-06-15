@@ -59,19 +59,42 @@ export const POST = withAuth(async (request: NextRequest, { user }) => {
 			}
 		});
 
-		// Prepare image data (use original buffer - Gemini handles compression)
-		const base64Image = buffer.toString('base64');
-		const imagePart = {
-			inlineData: {
-				data: base64Image,
-				mimeType: file.type || 'image/jpeg'
-			}
-		};
-		
-		logger.debug('Sending to Gemini Vision API');
+		// Prepare image data or text content based on file type
+		let result;
+		if (file.type?.startsWith('text/') || file.name.endsWith('.txt')) {
+			const textContent = buffer.toString('utf-8');
+			const prompt = `Extract resume, portfolio, or certificate information from the following text and return it as JSON:
 
-		// Prompt for extraction (optimized for speed and accuracy)
-		const prompt = `Extract certificate information as JSON:
+{
+  "title": "certificate title/course name/document type",
+  "institution": "issuing organization or school/company (use 'Self' or 'N/A' if unknown)",
+  "recipient": "recipient/student name",
+  "date_issued": "YYYY-MM-DD format (use current date if not found)",
+  "description": "2-3 sentences covering: purpose, details, duration, achievements, skills, grades",
+  "raw_text": "all visible text",
+  "confidence": 0.95
+}
+
+Document content:
+${textContent}
+
+Return only valid JSON, no markdown.`;
+
+			logger.debug('Sending text content to Gemini API');
+			result = await model.generateContent([prompt]);
+		} else {
+			const base64Image = buffer.toString('base64');
+			const imagePart = {
+				inlineData: {
+					data: base64Image,
+					mimeType: file.type || 'image/jpeg'
+				}
+			};
+			
+			logger.debug('Sending image to Gemini Vision API');
+
+			// Prompt for extraction (optimized for speed and accuracy)
+			const prompt = `Extract certificate information as JSON:
 
 {
   "title": "certificate title/course name",
@@ -85,8 +108,9 @@ export const POST = withAuth(async (request: NextRequest, { user }) => {
 
 Extract all text accurately. Return only valid JSON, no markdown.`;
 
-		// Call Gemini Vision API
-		const result = await model.generateContent([prompt, imagePart]);
+			// Call Gemini Vision API
+			result = await model.generateContent([prompt, imagePart]);
+		}
 		const response = await result.response;
 		const text = response.text();
 

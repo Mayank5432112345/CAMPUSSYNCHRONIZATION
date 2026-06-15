@@ -56,6 +56,25 @@ export default function AnalyticsDashboard() {
     }
   }, [timeRange]);
 
+  const exportAnalytics = useCallback(() => {
+    if (!data) {
+      setError('Load analytics before exporting');
+      return;
+    }
+
+    const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), timeRange, data }, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `campussync-analytics-${timeRange}.json`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }, [data, timeRange]);
+
   useEffect(() => {
     fetchAnalytics();
   }, [fetchAnalytics]);
@@ -316,7 +335,11 @@ export default function AnalyticsDashboard() {
                 Refresh
               </button>
               
-              <button className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2">
+              <button
+                onClick={exportAnalytics}
+                disabled={loading || !data}
+                className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 <Download className="w-4 h-4" />
                 Export
               </button>

@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Shield, Sparkles, Share2, ChevronRight, ArrowRight, Upload, CheckCircle, Lock, Zap, Eye, Globe, TrendingUp } from 'lucide-react';
 import { Header, Footer } from '@/components/layout';
 
 export default function EnhancedLandingPage() {
-  const router = useRouter();
   const [scrollY, setScrollY] = useState<number>(0);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -63,10 +62,6 @@ export default function EnhancedLandingPage() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleGetStarted = () => {
-    router.push('/signup');
-  };
 
   const workflowSteps = [
     {
@@ -164,7 +159,7 @@ export default function EnhancedLandingPage() {
 
               {/* Main Heading */}
               <div className="space-y-8">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.3] tracking-tight max-w-5xl mx-auto animate-fade-in-up px-4">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.3] tracking-tight max-w-5xl mx-auto animate-fade-in-up px-4">
                   <span className="inline-block hover:scale-105 transition-transform duration-300">Transform Certificates</span>
                   <br />
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent inline-block hover:scale-105 transition-transform duration-300 animate-gradient pb-2">
@@ -179,21 +174,21 @@ export default function EnhancedLandingPage() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <button 
-                  onClick={handleGetStarted}
+                <Link
+                  href="/signup"
                   className="group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 flex items-center gap-3 w-full sm:w-auto relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   <span className="relative z-10">Get Started Free</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
-                </button>
-                <button 
-                  onClick={handleGetStarted}
+                </Link>
+                <Link
+                  href="/demo/components"
                   className="group bg-white/5 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 hover:-translate-y-1 flex items-center gap-3 w-full sm:w-auto"
                 >
                   <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   View Demo
-                </button>
+                </Link>
               </div>
 
               {/* Animated Metrics */}
@@ -291,13 +286,13 @@ export default function EnhancedLandingPage() {
 
             {/* CTA Button */}
             <div className="text-center mt-16">
-              <button 
-                onClick={handleGetStarted}
+              <Link
+                href="/signup"
                 className="group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center gap-3"
               >
                 Start Your Journey
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -425,14 +420,14 @@ export default function EnhancedLandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={handleGetStarted}
+              <Link
+                href="/signup"
                 className="group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-10 py-5 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 hover:scale-110 inline-flex items-center gap-3 justify-center relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                 <span className="relative z-10">Start Free Trial</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>

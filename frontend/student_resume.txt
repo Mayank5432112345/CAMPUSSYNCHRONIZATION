@@ -1,0 +1,31 @@
+=======================================================
+MAYANK KATNORIA - RESUME & PORTFOLIO
+Email: student@university.edu
+University: Stanford University
+Major: Computer Science
+Graduation: June 2026
+GPA: 3.85/4.00
+Location: Palo Alto, CA
+=======================================================
+
+PROFESSIONAL SUMMARY:
+Passionate Software Engineering student with experience building full-stack web applications, working with Supabase, Next.js, and Google Gemini API.
+
+CORE SKILLS:
+- Languages: JavaScript, TypeScript, Python, SQL, HTML, CSS
+- Frameworks & Libraries: Next.js, React, Node.js, Express, Tailwind CSS
+- Databases & Tools: Supabase, PostgreSQL, Git, Docker, Vercel
+
+PROJECTS:
+1. CampusSync: Verified Credentials & Talent Matching Platform
+   - Built a secure portal for students to upload certificates and recruiters to view/verify achievements.
+   - Connected Gemini OCR for automated certificate data extraction and validation.
+   
+2. AI-Powered Resume Screener
+   - Created a tool to parse and match resumes with job descriptions using large language models.
+   - Designed a responsive dashboard for recruiters to view fit scores and candidates.
+
+EXPERIENCE:
+Software Engineering Intern | Stanford Dev Labs (June 2025 - Present)
+- Developed responsive React layouts and optimized page performance, reducing load times by 25%.
+- Implemented Supabase authentication and configured role-based access control (RLS) policies.

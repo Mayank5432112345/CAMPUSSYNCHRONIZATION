@@ -231,7 +231,7 @@ export async function POST(request: NextRequest) {
       const { data: authData, error: authError } = await adminClient.auth.admin.createUser({
         email,
         password,
-        email_confirm: false, // Require email verification
+        email_confirm: true, // Auto-confirm email in development
         user_metadata: {
           full_name,
           organization_id,

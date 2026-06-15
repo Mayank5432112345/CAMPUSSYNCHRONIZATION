@@ -81,6 +81,31 @@ export default function VCManagementPage() {
     fetchStats();
   }, [fetchStats]);
 
+  const exportKeySnapshot = () => {
+    const payload = {
+      exportedAt: new Date().toISOString(),
+      activeKey: {
+        label: 'Current Signing Key',
+        algorithm: 'RSA-2048',
+        status: 'Active',
+      },
+      note: 'Private signing material is never exported from the browser.',
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'campussync-key-snapshot.json';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const showRotateUnavailable = () => {
+    setError('Key rotation is not connected to an API yet. Add a rotation endpoint before using this in production.');
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-900 text-white">
@@ -383,10 +408,16 @@ export default function VCManagementPage() {
                     </div>
                   </div>
                   <div className="flex space-x-2">
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                    <button
+                      onClick={showRotateUnavailable}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
+                    >
                       Rotate
                     </button>
-                    <button className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-sm">
+                    <button
+                      onClick={exportKeySnapshot}
+                      className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-sm"
+                    >
                       Export
                     </button>
                   </div>

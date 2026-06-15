@@ -449,9 +449,13 @@ export default function LoginPage() {
               {/* Footer */}
               <p className="mt-8 text-center text-xs text-white/60 leading-relaxed">
                 By continuing, you agree to our {" "}
-                <button className="text-white/80 hover:text-white hover:underline font-semibold transition-colors">Terms of Service</button>
+                <Link href="/terms" className="text-white/80 hover:text-white hover:underline font-semibold transition-colors">
+                  Terms of Service
+                </Link>
                 {" "} and {" "}
-                <button className="text-white/80 hover:text-white hover:underline font-semibold transition-colors">Privacy Policy</button>
+                <Link href="/privacy" className="text-white/80 hover:text-white hover:underline font-semibold transition-colors">
+                  Privacy Policy
+                </Link>
               </p>
 
               {/* Sign Up Link */}

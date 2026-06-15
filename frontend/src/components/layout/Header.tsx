@@ -187,7 +187,7 @@ export function Header({ user, onLogout }: HeaderProps) {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10">
+        <div className="lg:hidden border-t border-white/10 absolute top-full left-0 right-0 bg-slate-950/95 backdrop-blur-xl border-b border-white/10 shadow-2xl z-50">
           <div className="space-y-2 px-4 py-6">
             {navigation.map((item) => (
               <a

@@ -544,7 +544,63 @@ export default function StudentDashboard() {
               </a>
             </div>
           ) : (
-            <div className="overflow-x-auto">
+            <>
+              {/* Mobile list view */}
+            <div className="md:hidden divide-y divide-white/10">
+              {rows.map((row) => (
+                <div key={row.id} className="p-4 space-y-3 hover:bg-white/5 transition-all">
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-white font-semibold truncate">{row.title}</h4>
+                      <p className="text-white/60 text-sm truncate">{row.institution}</p>
+                    </div>
+                    <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                      <div className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${getStatusColor(row.verification_status, row.auto_approved)}`}>
+                        {getStatusText(row.verification_status, row.auto_approved)}
+                      </div>
+                      {row.auto_approved && (
+                        <div className="flex items-center gap-0.5 px-1.5 py-0.5 bg-emerald-500/10 rounded-md text-[9px] text-emerald-300 font-bold border border-emerald-400/20">
+                          <Zap className="w-2 h-2" />
+                          Auto
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center text-xs text-white/70">
+                    <span>Issued: {row.date_issued ? new Date(row.date_issued).toLocaleDateString() : 'N/A'}</span>
+                    {row.confidence_score ? (
+                      <span className={`font-bold ${getConfidenceColor(row.confidence_score)}`}>
+                        Confidence: {Math.round(row.confidence_score * 100)}%
+                      </span>
+                    ) : (
+                      <span className="text-white/40">Confidence: N/A</span>
+                    )}
+                  </div>
+                  <div className="flex justify-end gap-2 pt-2">
+                    {row.file_url && (
+                      <a
+                        href={row.file_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 text-xs text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 rounded-lg border border-blue-400/20 transition-all"
+                      >
+                        View
+                      </a>
+                    )}
+                    <button
+                      onClick={() => showDeleteConfirmation(row.id, row.title)}
+                      disabled={deleting === row.id}
+                      className="px-3 py-1.5 text-xs text-red-300 bg-red-500/10 hover:bg-red-500/20 rounded-lg border border-red-400/20 transition-all"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table view */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-white/10 bg-white/5">
@@ -652,6 +708,7 @@ export default function StudentDashboard() {
                 </tbody>
               </table>
             </div>
+          </>
           )}
         </div>
       </div>

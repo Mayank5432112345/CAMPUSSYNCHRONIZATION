@@ -14,27 +14,58 @@ html {
   --font-family-mono: var(--font-geist-mono), Menlo, Monaco, "Courier New", monospace;
   
   /* ===== BRAND COLORS (From Logo) ===== */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  --color-primary-50: #f0faff;
+  --color-primary-100: #e0f4ff;
+  --color-primary-200: #bde7ff;
+  --color-primary-300: #85d3ff;
+  --color-primary-400: #42b6ff;
+  --color-primary-500: #00f0ff; /* Neon Cyan-Blue */
+  --color-primary-600: #00bfff;
+  --color-primary-700: #008ebf;
+  --color-primary-800: #005f80;
+  --color-primary-900: #003040;
   
-  --color-secondary-50: #ecfdf5;
-  --color-secondary-100: #d1fae5;
-  --color-secondary-200: #a7f3d0;
-  --color-secondary-300: #6ee7b7;
-  --color-secondary-400: #34d399;
-  --color-secondary-500: #10b981;
-  --color-secondary-600: #059669;
-  --color-secondary-700: #047857;
-  --color-secondary-800: #065f46;
-  --color-secondary-900: #064e3b;
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f3e8ff;
+  --color-secondary-200: #e9d5ff;
+  --color-secondary-300: #d8b4fe;
+  --color-secondary-400: #c084fc;
+  --color-secondary-500: #bd00ff; /* Neon Purple */
+  --color-secondary-600: #9333ea;
+  --color-secondary-700: #7e22ce;
+  --color-secondary-800: #6b21a8;
+  --color-secondary-900: #581c87;
+
+  /* ===== TAILWIND DEFAULT COLOR OVERRIDES ===== */
+  --color-blue-50: #f0f5ff;
+  --color-blue-100: #e0ebff;
+  --color-blue-200: #c2d7ff;
+  --color-blue-300: #94b8ff;
+  --color-blue-400: #00f0ff; /* Neon Cyan */
+  --color-blue-500: #0066ff; /* Neon Blue */
+  --color-blue-600: #0052cc;
+  --color-blue-700: #003d99;
+  --color-blue-800: #002966;
+  --color-blue-900: #001433;
+
+  --color-emerald-50: #fcf5ff;
+  --color-emerald-100: #f6e8ff;
+  --color-emerald-200: #eed5ff;
+  --color-emerald-300: #e3b4fe;
+  --color-emerald-400: #d484fc;
+  --color-emerald-500: #bd00ff; /* Neon Purple */
+  --color-emerald-600: #9c00cc;
+  --color-emerald-700: #7d00a3;
+  --color-emerald-800: #5f007c;
+  --color-emerald-900: #420056;
+
+  --color-cyan-50: #f0fdff;
+  --color-cyan-100: #e0f8ff;
+  --color-cyan-200: #bdefff;
+  --color-cyan-300: #8ae3ff;
+  --color-cyan-400: #00f0ff; /* Neon Cyan */
+  --color-cyan-500: #00bfff;
+  --color-cyan-600: #008ebf;
   
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
   --animate-float: float 3s ease-in-out infinite;
@@ -43,34 +74,34 @@ html {
 
 /* CampusSync Design System */
 :root {
-  /* Primary Colors - Updated to match CampusSync blue-to-emerald theme */
-  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
-  --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-  --brand-gradient: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  /* Primary Colors - Updated to match CampusSync Neon Blue-to-Cyan theme */
+  --primary-gradient: linear-gradient(135deg, #0066ff 0%, #00f0ff 100%);
+  --success-gradient: linear-gradient(135deg, #00ff66 0%, #10b981 100%);
+  --accent-gradient: linear-gradient(135deg, #00f0ff 0%, #bd00ff 100%);
+  --brand-gradient: linear-gradient(135deg, #0066ff 0%, #00f0ff 100%);
   
   /* Base Colors */
-  --background: #f7fafc;
-  --foreground: #2d3748;
-  --card-bg: #ffffff;
-  --muted: #4a5568;
-  --light-gray: #718096;
-  --border: #e2e8f0;
+  --background: #05070f;
+  --foreground: #f8fafc;
+  --card-bg: #0b0f19;
+  --muted: #64748b;
+  --light-gray: #94a3b8;
+  --border: #1e293b;
   
   /* Status Colors */
-  --verified-bg: #c6f6d5;
-  --verified-text: #22543d;
-  --pending-bg: #feebc8;
-  --pending-text: #c05621;
-  --rejected-bg: #fed7d7;
-  --rejected-text: #c53030;
+  --verified-bg: rgba(0, 255, 102, 0.15);
+  --verified-text: #00ff66;
+  --pending-bg: rgba(245, 158, 11, 0.15);
+  --pending-text: #f59e0b;
+  --rejected-bg: rgba(239, 68, 68, 0.15);
+  --rejected-text: #ef4444;
   
-  /* Shadows - Updated to blue theme */
-  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --shadow-primary: 0 4px 15px rgba(59, 130, 246, 0.4);
-  --shadow-primary-hover: 0 8px 25px rgba(59, 130, 246, 0.6);
+  /* Shadows - Updated to Neon Blue theme */
+  --shadow-sm: 0 2px 8px rgba(0, 240, 255, 0.1);
+  --shadow-md: 0 4px 20px rgba(0, 240, 255, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 102, 255, 0.2);
+  --shadow-primary: 0 0 15px rgba(0, 240, 255, 0.35), 0 0 30px rgba(0, 102, 255, 0.15);
+  --shadow-primary-hover: 0 0 25px rgba(0, 240, 255, 0.6), 0 0 50px rgba(0, 102, 255, 0.35);
   
   /* Typography */
   --font-weight-normal: 400;
@@ -84,12 +115,12 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1a202c;
-    --foreground: #f7fafc;
-    --card-bg: #2d3748;
-    --muted: #a0aec0;
-    --light-gray: #cbd5e0;
-    --border: #4a5568;
+    --background: #05070f;
+    --foreground: #f8fafc;
+    --card-bg: #0b0f19;
+    --muted: #64748b;
+    --light-gray: #94a3b8;
+    --border: #1e293b;
   }
 }
 
@@ -124,9 +155,9 @@ body {
 }
 
 .cv-glass {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(11, 15, 25, 0.7);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 240, 255, 0.15);
 }
 
 .cv-card {
@@ -390,22 +421,22 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0F1E;
+  background: #05070f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #3B82F6, #06B6D4, #10B981);
+  background: linear-gradient(to bottom, #0066ff, #00f0ff, #bd00ff);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #2563EB, #0891B2, #059669);
+  background: linear-gradient(to bottom, #0052cc, #00ccff, #9c00cc);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3B82F6 #0A0F1E;
+  scrollbar-color: #00f0ff #05070f;
 }
 
 /* Responsive Utilities */
